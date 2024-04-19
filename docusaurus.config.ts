@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Fordham CIMG',
+  title: 'CImg',
   tagline: '',
   favicon: 'img/fordhamLogo.png',
 
