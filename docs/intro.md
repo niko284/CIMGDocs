@@ -20,12 +20,20 @@ To use CImg, include the following lines of code at the top of your *.cpp* files
 using namespace cimg_library;
 ```
 
+#### Compiling a .cpp file in Windows:
+```jsx title="hello.cpp"
+g++ hello.cpp -lX11
+```
+
 ### macOS
 
 - Install CImg by downloading [XQuartz](https://www.xquartz.org) which gives us access to XWindows.
 - Download the latest .pkg file on the site and follow the prompts to install XQuartz.
-- After the installation, go to where your CImg file was downloaded, ideally in your desktop.
-- After accessing your CImg file, make sure to select the **"Make" type**, and select **dmacos**, which is debug Mac OS.
+- After the installation, go to where your CImg package folder was downloaded, ideally in your desktop. 
+- Open your terminal and use the **cd** command to move your current directory to the CImg folder.
+- Once you are in your CImg folder, use the **cd** command once more into your examples folder with the command `cd examples`.
+    - **IMPORTANT:** After accessing your **examples** folder in the terminal, (you can verify this using the **pwd**) command, you need to install
+    all of the necessary packages onto your Mac. To do this, type in `make dmacos` into your terminal, and wait for it to finish.
 
 You are now done installing CImg! To compile a .cpp file like **hello.cpp**, for example, you would use the following command in your terminal:
 #### Compiling a .cpp file in macOS:

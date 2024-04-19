@@ -14,31 +14,21 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        CImg was meticulously crafted to offer a seamless experience, 
+        ensuring effortless integration and swift execution of image processing tasks for developers of all levels.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Cross-Platform',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        CImg boasts robust cross-platform support, allowing developers to seamlessly utilize its image processing capabilities across various operating systems 
+        and environments without any compatibility hurdles.
       </>
     ),
-  },
-  {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
-  },
+  }
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {
@@ -59,7 +49,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className={styles.flexbox_container}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
