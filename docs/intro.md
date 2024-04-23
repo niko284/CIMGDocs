@@ -20,9 +20,53 @@ To use CImg, include the following lines of code at the top of your *.cpp* files
 using namespace cimg_library;
 ```
 
+We can create a program to draw rectangles of different colors wherever your mouse is clicked, named **rectangle.cpp**, and compile it based on device as specified below:
+```cpp jsx title="rectangle.cpp"
+#include <CImg.h>
+using namespace cimg_library;
+
+int main() 
+{
+
+    int size_x = 640;
+    int size_y = 480;
+    int size_z = 1;
+    int numberOfColorChannels = 3; // R G B
+    unsigned char initialValue = 0;
+
+    CImg<unsigned char> image(size_x, size_y, size_z, numberOfColorChannels, initialValue);
+
+    CImgDisplay display(image, "Click a point");
+
+    unsigned char randomColor[3]; // declare once for optimization.
+
+    const int RECTANGLE_SIZE = 10;
+
+    while (!display.is_closed())
+    {
+        display.wait(); // Wait for any user event to occur on the display before continuing our code.
+        if (display.button() && display.mouse_y() >= 0 && display.mouse_x() >= 0)
+        {
+            const int y = display.mouse_y();
+            const int x = display.mouse_x();
+
+            randomColor[0] = rand() % 256;
+            randomColor[1] = rand() % 256;
+            randomColor[2] = rand() % 256;
+
+            // draw a rectangle centered at the clicked point
+            image.draw_rectangle(x - RECTANGLE_SIZE, y - RECTANGLE_SIZE, x + RECTANGLE_SIZE, y + RECTANGLE_SIZE, randomColor);
+        }
+        image.display(display);
+    }
+    return 0;
+}
+```
+
 #### Compiling a .cpp file in Windows:
-```jsx title="hello.cpp"
-g++ hello.cpp -lX11
+
+```cpp
+g++ rectangle.cpp -lX11
 ```
 
 ### macOS
@@ -35,8 +79,8 @@ g++ hello.cpp -lX11
     - **IMPORTANT:** After accessing your **examples** folder in the terminal, (you can verify this using the **pwd**) command, you need to install
     all of the necessary packages onto your Mac. To do this, type in `make dmacos` into your terminal, and wait for it to finish.
 
-You are now done installing CImg! To compile a .cpp file like **hello.cpp**, for example, you would use the following command in your terminal:
+You are now done installing CImg! To compile a .cpp file like **rectangle.cpp**, for example, you would use the following command in your terminal:
 #### Compiling a .cpp file in macOS:
-```jsx title="hello.cpp"
-g++ -o hello hello.cpp -O2 -lm -lpthread -I/usr/XR6/include -L/usr/X11R6/lib -lm -lpthread -lX11
+```jsx title="rectangle.cpp"
+g++ -o rectangle rectangle.cpp -O2 -lm -lpthread -I/usr/XR6/include -L/usr/X11R6/lib -lm -lpthread -lX11
 ```
